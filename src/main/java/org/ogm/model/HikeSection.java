@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class HikeSection {
-    
+
     private String start;
     private String end;
 

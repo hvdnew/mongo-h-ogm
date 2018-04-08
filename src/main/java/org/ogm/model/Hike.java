@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -26,23 +27,11 @@ public class Hike {
     public Hike() {
     }
 
-    public Hike(String description, Date date, BigDecimal difficulty, HikeSection... hikeSections) {
+    public Hike(String description, Date date, BigDecimal difficulty, HikeSection... sections) {
         this.description = description;
         this.date = date;
         this.difficulty = difficulty;
-        this.sections = new ArrayList<>(0);
-        for (HikeSection section : hikeSections) {
-            this.sections.add(section);
-        }
-    }
-
-    public Hike(String id, String description, Date date, BigDecimal difficulty, Person organizer, List<HikeSection> sections) {
-        this.id = id;
-        this.description = description;
-        this.date = date;
-        this.difficulty = difficulty;
-        this.organizer = organizer;
-        this.sections = sections;
+        this.sections = this.sections != null ? new ArrayList<>(Arrays.asList(sections)) : new ArrayList<>();
     }
 
     public String getId() {

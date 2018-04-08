@@ -17,6 +17,9 @@ public class Person {
     @OneToMany(mappedBy = "organizer", cascade = CascadeType.PERSIST)
     private Set<Hike> organizedHikes = new HashSet<>();
 
+    @OneToOne
+    Address address;
+
     public Person() {
     }
 
@@ -55,5 +58,13 @@ public class Person {
 
     public void setOrganizedHikes(Set<Hike> organizedHikes) {
         this.organizedHikes = organizedHikes;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
